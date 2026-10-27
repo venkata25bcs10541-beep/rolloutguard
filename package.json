@@ -1,0 +1,23 @@
+{
+  "name": "rolloutguard",
+  "version": "1.0.0",
+  "description": "Deployment Safety & Release Monitoring Platform",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "start:backend": "npm --prefix backend start",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:backend": "npm --prefix backend test",
+    "seed": "npm --prefix backend run seed"
+  },
+  "keywords": [
+    "canary",
+    "release-monitoring",
+    "deployment-safety",
+    "rollback-automation",
+    "devops",
+    "mern"
+  ],
+  "author": "RolloutGuard Team",
+  "license": "MIT"
+}

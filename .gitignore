@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Cache and temporary files
+.cache/
+.temp/
+mongodb-binaries/
+coverage/
+
+# OS specific
+.DS_Store
+Thumbs.db
