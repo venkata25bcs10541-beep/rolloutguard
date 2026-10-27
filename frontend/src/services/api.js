@@ -1,4 +1,4 @@
-const RAW_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+const RAW_BASE = import.meta.env.VITE_API_BASE_URL || 'https://rolloutguard-2.onrender.com/api';
 const API_BASE = RAW_BASE.replace(/\/+$/, '');
 
 /**
@@ -25,11 +25,11 @@ export async function fetchJson(endpoint, options = {}) {
   try {
     data = await response.json();
   } catch (err) {
-    data = { success: false, message: response.statusText || 'Failed to parse JSON response' };
+    throw new Error('Received non-JSON response from server. Check API URL.');
   }
 
-  if (!response.ok) {
-    const error = new Error(data.message || `Request failed with status ${response.status}`);
+  if (!response.ok || (data && data.success === false)) {
+    const error = new Error((data && data.message) || `Request failed with status ${response.status}`);
     error.status = response.status;
     error.data = data;
     throw error;
