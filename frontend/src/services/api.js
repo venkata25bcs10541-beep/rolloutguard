@@ -1,4 +1,16 @@
-const RAW_BASE = import.meta.env.VITE_API_BASE_URL || 'https://rolloutguard-2.onrender.com/api';
+// Use /api by default so Vercel's vercel.json edge proxy routes directly to Render with zero CORS
+let RAW_BASE = '/api';
+
+const envBase = import.meta.env.VITE_API_BASE_URL;
+if (envBase && !envBase.includes('rolloutguard-1')) {
+  RAW_BASE = envBase;
+}
+
+// Ensure /api suffix if pointing directly to an external host
+if (RAW_BASE.startsWith('http') && !RAW_BASE.endsWith('/api')) {
+  RAW_BASE = `${RAW_BASE.replace(/\/+$/, '')}/api`;
+}
+
 const API_BASE = RAW_BASE.replace(/\/+$/, '');
 
 /**
